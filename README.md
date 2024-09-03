@@ -1,7 +1,7 @@
 
 # Temperature Conversion
 ![gbase](https://d20khd7ddkh5ls.cloudfront.net/fandctempconversion.jpg)
-![gbase](https://projects-static.raspberrypi.org/projects/music-player/89cc4ed5bc97a43116eb06d3d090454b038dac79/en/images/banner.png) 
+
 
 Hi!
 
