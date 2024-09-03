@@ -31,36 +31,47 @@ This project uses the Micro:bit's built-in temperature sensor to continuously mo
 ### Complete Block-Based Implementation
 Here is the complete block-based implementation in the MakeCode editor:
 #### Initialize Variables
-```blocks
-let highest_temp = -999
-let lowest_temp = 999
-Copy
-Insert
-Convert Celsius to Fahrenheit Function
-function celsius_to_fahrenheit(celsius: number): number {
+```
+highest_temp = -999
+lowest_temp = 999
+
+def celsius_to_fahrenheit(celsius):
     return (celsius * 9 / 5) + 32
-}
-Update Temperature Records Function
-function update_temperature_records(current_temp: number) {
-    if (highest_temp == -999 || current_temp > highest_temp) {
+
+def update_temperature_records(current_temp):
+    global highest_temp, lowest_temp
+    if highest_temp == -999 or current_temp > highest_temp:
         highest_temp = current_temp
-    }
-    if (lowest_temp == 999 || current_temp < lowest_temp) {
+    if lowest_temp == 999 or current_temp < lowest_temp:
         lowest_temp = current_temp
-Main Loop
-basic.forever(function () {
-    let current_temp = input.temperature()
-    let current_temp_fahrenheit = celsius_to_fahrenheit(current_temp)
-    update_temperature_records(current_temp)
-    basic.showNumber(current_temp_fahrenheit)
-    basic.pause(60000)
-})
-input.onButtonPressed(Button.A, function () {
-    basic.showString("High: ")
-    basic.showNumber(highest_temp)
-input.onButtonPressed(Button.B, function () {
-    basic.showString("Low: ")
-    basic.showNumber(lowest_temp)
+
+def main_loop():
+    import time
+    while True:
+        current_temp = get_current_temperature()  # Placeholder for actual temperature reading function
+        current_temp_fahrenheit = celsius_to_fahrenheit(current_temp)
+        update_temperature_records(current_temp)
+        show_number(current_temp_fahrenheit)  # Placeholder for actual display function
+        time.sleep(60)
+
+def on_button_pressed_a():
+    show_string("High: ")  # Placeholder for actual display function
+    show_number(highest_temp)  # Placeholder for actual display function
+
+def on_button_pressed_b():
+    show_string("Low: ")  # Placeholder for actual display function
+    show_number(lowest_temp)  # Placeholder for actual display function
+
+# Placeholder functions for temperature reading and display
+def get_current_temperature():
+    # This function should return the current temperature in Celsius
+    return 25  # Example temperature
+
+def show_number(number):
+    print(number)
+
+def show_string(string):
+    print(string)
 ```
 #### Questions
 ```
@@ -81,6 +92,6 @@ input.onButtonPressed(Button.B, function () {
 ```
 
  #### Conclusion
-```
+
 
 By following these steps, you can create a Micro:bit project that continuously monitors temperature, converts it to Fahrenheit, and keeps track of the highest and lowest temperatures. This project is a great way to learn about temperature conversion and data logging using the Micro:bit's block-based programming interface.
